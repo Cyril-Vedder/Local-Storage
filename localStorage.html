@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<!-- Cyril Vedder          Project 7 CIS 115       2/25/14 -->
+
+	<head>
+		<title>Local Storage</title>
+		<meta charset="utf-8">
+		<script>
+  			function init() {
+    			var addButton = document.getElementById("addButton");
+    			addButton.onclick = handleAddButton;
+
+    			checkLocalStorage();
+			}
+			window.onload = init;
+
+			function handleAddButton() {
+    			var box1 = document.getElementById("textBox1");
+    			var box2 = document.getElementById("textBox2");
+    			var box3 = document.getElementById("textBox3");
+    			var box4 = document.getElementById("textBox4");
+    		
+   				localStorage.setItem("textBox1", box1.value);
+   				localStorage.setItem("textBox2", box2.value);
+   				localStorage.setItem("textBox3", box3.value);
+   				localStorage.setItem("textBox4", box4.value);
+   			
+   				alert("The value of the four boxes are " + localStorage["textBox1"] + ", " + localStorage["textBox2"] + ", " + localStorage["textBox3"] + ", " + localStorage["textBox4"]);	
+   				 	
+   				var div = document.getElementById("storageDiv");
+    
+    			div.innerHTML = "key1: " + localStorage["textBox1"] +  "<br>key2: " + localStorage["textBox2"] +
+    							"<br>key3: " + localStorage["textBox3"] + "<br>key4: " + localStorage["textBox4"];
+   				
+   				textBox1.value= "";
+   				textBox2.value= "";
+   				textBox3.value= "";
+   				textBox4.value= "";
+			}
+			
+			function checkLocalStorage() {
+    			alert("Values saved are: " + localStorage["textBox1"] + ", " + localStorage["textBox2"] + ", " + localStorage["textBox3"] + ", " + localStorage["textBox4"]);
+    			
+    			textBox1.value = localStorage["textBox1"];
+    			textBox2.value = localStorage["textBox2"];
+    			textBox3.value = localStorage["textBox3"];
+    			textBox4.value = localStorage["textBox4"];
+			}
+		</script>
+	</head>
+	<body>
+		<input type="text" id="textBox1" size="40">
+		<input type="text" id="textBox2" size="40">
+		<input type="text" id="textBox3" size="40">
+		<input type="text" id="textBox4" size="40">
+		<br>
+    	<input type="button" id="addButton" value="Add">
+    	<hr>
+    	<div id="storageDiv"></div>
+	</body>
+</html>
